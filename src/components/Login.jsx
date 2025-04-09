@@ -5,7 +5,8 @@ function Login() {
   const [data, setData] = useState({});
 
   const handleClickTest = () => {
-    fetch("http://localhost:3000/users")
+    // eslint-disable-next-line no-undef
+    fetch(`${process.env.REACT_APP_API_URL}/users`)
       .then((res) => res.json())
       .then(function (data) {
         const html = data
@@ -42,7 +43,8 @@ const handleSubmit = (e) => {
   formData.append("password", data.password);
   formData.append("profilepic", document.getElementById("profilepic").files[0]);
 
-  fetch("http://localhost:3000/users/register", {
+  // eslint-disable-next-line no-undef
+  fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
     method: "POST",
     body: formData,
   })
