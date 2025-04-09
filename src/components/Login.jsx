@@ -6,7 +6,7 @@ function Login() {
 
   const handleClickTest = () => {
     // eslint-disable-next-line no-undef
-    fetch(`https://deploying-simple-backend.onrender.com/users`)
+    fetch(`${import.meta.env.REACT_APP_API_URL}/users`)
       .then((res) => res.json())
       .then(function (data) {
         const html = data
@@ -44,7 +44,7 @@ const handleSubmit = (e) => {
   formData.append("profilepic", document.getElementById("profilepic").files[0]);
 
   // eslint-disable-next-line no-undef
-  fetch(`https://deploying-simple-backend.onrender.com/users/register`, {
+  fetch(`${import.meta.env.REACT_APP_API_URL}/users/register`, {
     method: "POST",
     body: formData,
   })
