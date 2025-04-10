@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
 
+// for environment variables in Vite we need to use VITE_
+// and then import them when needed E.g. import.meta.env.VITE_API_URL
+
 function Login() {
   const userList = useRef();
   const [data, setData] = useState({});
 
   const handleClickTest = () => {
-    fetch("http://localhost:3000/users")
+    fetch(`${import.meta.env.VITE_API_URL}/users`)
       .then((res) => res.json())
       .then(function (data) {
         const html = data
@@ -42,7 +45,7 @@ const handleSubmit = (e) => {
   formData.append("password", data.password);
   formData.append("profilepic", document.getElementById("profilepic").files[0]);
 
-  fetch("http://localhost:3000/users/register", {
+  fetch(`${import.meta.env.VITE_API_URL}/users/register`, {
     method: "POST",
     body: formData,
   })
